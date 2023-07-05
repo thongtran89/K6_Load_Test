@@ -7,8 +7,7 @@ const API_URL = "https://dev-apim-we-integration-integrationapim1.azure-api.net"
 export function sampleJava(){
     // Get sample Java 
     let getSampleJava = http.get(
-        `${API_URL}/sample-java-api/}`,
-        params
+        `${API_URL}/sample-java-api/}`
     );
     
     check(
@@ -19,8 +18,7 @@ export function sampleJava(){
 export function requiredUsers(){
     // Get required users
     let getRequiredUsers = http.get(
-        `${API_URL}/is-required/users}`,
-        params
+        `${API_URL}/is-required/users}`
     );
     
     check(
