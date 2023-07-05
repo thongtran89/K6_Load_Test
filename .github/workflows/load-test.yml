@@ -4,7 +4,7 @@ on:
     branches: [main]
   schedule:
     # Runs "At 11:00 on every day-of-week from Monday through Friday"
-    - cron: '0 11 * * 1-5'
+    #- cron: '0 11 * * 1-5'
 jobs:
 k6_load_test:
   name: k6 Load Test
@@ -18,3 +18,10 @@ k6_load_test:
       uses: grafana/k6-action@v0.2.0
       with:
         filename: test_scripts/perf_test.js
+        flags: --out json=results.json
+        
+    - name: Upload performance test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: k6-load-test-summary-report-html
+        path: summary.html
