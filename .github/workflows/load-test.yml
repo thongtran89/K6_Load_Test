@@ -1,16 +1,24 @@
-name: Main Workflow
-on: [push]
+name: K6 Performance Testing
+on:
+  push:
+    branches: [main]
 jobs:
-  build:
-    name: Run k6 test
+  k6_load_test:
+    name: k6 Load Test
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run k6 cloud test
+
+      - name: Run local k6 test
         uses: grafana/k6-action@v0.3.0
         with:
-          filename: test_scripts/perf_test.js
-          flags: --vus 50 --duration 10s
-          cloud: true
-          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+          filename: scenarios/perf_test_scenarios.js
+          flags: --out json=results.json
+
+      - name: Upload performance test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-load-test-summary-report-html
+          path: summary.html
