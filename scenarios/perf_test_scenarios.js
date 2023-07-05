@@ -1,4 +1,4 @@
-import {sampleJava, requiredUsers} from '../scripts/perf_test_demo.js'
+import {sampleJava, requiredUsers} from '../scripts/perf_test_scripts.js'
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 // Common things
 
