@@ -2,13 +2,13 @@ name: K6 Performance Testing
 on:
   push:
     branches: [main]
-  schedule:
+  #schedule:
     # Runs "At 11:00 on every day-of-week from Monday through Friday"
     #- cron: '0 11 * * 1-5'
 jobs:
-k6_load_test:
-  name: k6 Load Test
-  runs-on: ubuntu-latest
+  k6_load_test:
+    name: k6 Load Test
+    runs-on: ubuntu-latest
 
   steps:
     - name: Checkout
